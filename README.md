@@ -5,6 +5,11 @@ See [Ansible's file module docs](https://docs.ansible.com/ansible/latest/collect
 
 
 ## Role Variables
+### aspects_file_tasks_enabled
+Default: `False`. Set to `True` to run the roles tasks.
+
+Whether or not to include the tasks from this role.
+
 ### aspects_file_tasks_set_file_state_enabled
 Default: `False`. Set to `True` to run the associated tasks.
 
