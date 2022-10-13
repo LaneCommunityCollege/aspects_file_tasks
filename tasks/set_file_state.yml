@@ -1,0 +1,49 @@
+- name: "Set general file or directory state."
+  when:
+    - item.value.enabled or item.value.enabled == "True"
+    - (
+        item.value.state == "file" or
+        item.value.state == "directory" or
+        item.value.state == "touch"
+      )
+  file:
+    state: "{{ item.value.state }}"
+    dest: "{{ item.value.dest }}"
+    owner: "{{ item.value.owner }}"
+    group: "{{ item.value.group }}"
+    mode: "{{ item.value.mode }}"
+  loop: "{{ common_utilities_set_file_state_items | default({}) | dict2items }}"
+  tags:
+    - "common_utilities"
+    - "common_utilities_set_file_state"
+
+- name: "Set general file or directory state."
+  when:
+    - item.value.enabled or item.value.enabled == "True"
+    - (
+      item.value.state == "link" or
+      item.value.state == "hard"
+      )
+  file:
+    state: "{{ item.value.state }}"
+    src: "{{ item.value.src }}"
+    dest: "{{ item.value.dest }}"
+    owner: "{{ item.value.owner }}"
+    group: "{{ item.value.group }}"
+    mode: "{{ item.value.mode }}"
+  loop: "{{ common_utilities_set_file_state_items | default({}) | dict2items }}"
+  tags:
+    - "common_utilities"
+    - "common_utilities_set_file_state"
+
+- name: "Delete general file or directory."
+  when:
+    - item.value.enabled or item.value.enabled == "True"
+    - item.value.state == "absent"
+  file:
+    state: "{{ item.value.state }}"
+    dest: "{{ item.value.dest }}"
+  loop: "{{ common_utilities_set_file_state_items | default({}) | dict2items }}"
+  tags:
+    - "common_utilities"
+    - "common_utilities_set_file_state"

@@ -1,0 +1,26 @@
+---
+galaxy_info:
+  author: David Reagan
+  description: Generic file related tasks. A catch all for any file related task that doesn't need to be part of its own role. Currently can handle uploading files, deleting files, setting file/directory/symlink/hard link state, uploading Certificate Authority files, templating plain text files, and templating yaml formatted files.
+  company: Lane Community College
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+  - name: CentOS
+    versions:
+    - 7
+  - name: Ubuntu
+    versions:
+    - bionic
+    - focal
+    - jammy
+  - name: Debian
+    versions:
+    - buster
+  - name: OracleLinux
+    versions:
+      - 7
+  categories:
+  - development
+  - web
+dependencies: {}

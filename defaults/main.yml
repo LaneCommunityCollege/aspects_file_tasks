@@ -1,0 +1,5 @@
+aspects_file_tasks_enabled: False
+aspects_file_tasks_set_file_state_enabled: False
+aspects_file_tasks_set_file_contents_enabled: False
+aspects_file_tasks_set_file_contents_cas_enabled: False
+aspects_file_tasks_update_cas_command: "{% if ansible_os_family == 'Debian' %}update-ca-certificates{% else %}update-ca-trust{% endif %}"

@@ -1,0 +1,12 @@
+- name: "Run aspects_file_tasks"
+  when: aspects_file_tasks_enabled
+  include_tasks: init.yml
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_state"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_upload"
+    - "aspects_file_tasks_set_file_contents_template"
+    - "aspects_file_tasks_set_file_contents_template_plain"
+    - "aspects_file_tasks_set_file_contents_template_yaml"
+    - "aspects_file_tasks_set_file_contents_cas"

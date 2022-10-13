@@ -1,0 +1,19 @@
+- name: "Include set_file_state tasks"
+  when:
+    - aspects_file_tasks_set_file_state_enabled
+  include_tasks: set_file_state.yml
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_state"
+
+- name: "Include set_file_contents tasks"
+  when:
+    - aspects_file_tasks_set_file_contents_enabled
+  include_tasks: set_file_contents.yml
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_upload"
+    - "aspects_file_tasks_set_file_contents_template"
+    - "aspects_file_tasks_set_file_contents_template_plain"
+    - "aspects_file_tasks_set_file_contents_template_yaml"

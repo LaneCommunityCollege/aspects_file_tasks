@@ -1,0 +1,44 @@
+- name: "set_file_contents - Upload a file"
+  when:
+    -  item.1.enabled or item.1.enabled == "True"
+  copy:
+    src: "{{ item.1.src }}"
+    dest: "{{ item.1.dest }}"
+    mode: "{{ item.1.mode }}"
+    owner: "{{ item.1.owner }}"
+    group: "{{ item.1.group }}"
+  loop: "{{ aspects_file_tasks_set_file_contents_uploads | default({}) | dictsort }}"
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_upload"
+
+- name: "set_file_contents - Template a plain file."
+  when:  item.1.enabled or item.1.enabled == "True"
+  template:
+    src: non_filtered.j2
+    dest: "{{ item.1.target_path }}"
+    owner: "{{ item.1.owner }}"
+    group: "{{ item.1.group }}"
+    mode: "{{ item.1.mode }}"
+  loop: "{{ aspects_file_tasks_set_file_contents_template_plain_files | default({}) | dictsort }}"
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_template"
+    - "aspects_file_tasks_set_file_contents_template_plain"
+
+- name: "set_file_contents - Template a yaml file."
+  when:  item.1.enabled or item.1.enabled == "True"
+  template:
+    src: yaml_filtered.j2
+    dest: "{{ item.1.target_path }}"
+    owner: "{{ item.1.owner }}"
+    group: "{{ item.1.group }}"
+    mode: "{{ item.1.mode }}"
+  loop: "{{ aspects_file_tasks_set_file_contents_template_yaml_files | default({}) | dictsort }}"
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_template"
+    - "aspects_file_tasks_set_file_contents_template_yaml"

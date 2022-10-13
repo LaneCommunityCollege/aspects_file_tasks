@@ -1,0 +1,6 @@
+- name: "update cert authorities"
+  shell: "{{ aspects_file_tasks_update_cas_command }}"
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_cas"
