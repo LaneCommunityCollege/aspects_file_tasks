@@ -12,7 +12,7 @@
     owner: "{{ item.1.owner }}"
     group: "{{ item.1.group }}"
     mode: "{{ item.1.mode }}"
-  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dict2items }}"
+  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dictsort }}"
   tags:
     - "aspects_file_tasks"
     - "aspects_file_tasks_set_file_state"
@@ -31,7 +31,7 @@
     owner: "{{ item.1.owner }}"
     group: "{{ item.1.group }}"
     mode: "{{ item.1.mode }}"
-  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dict2items }}"
+  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dictsort }}"
   tags:
     - "aspects_file_tasks"
     - "aspects_file_tasks_set_file_state"
@@ -43,7 +43,7 @@
   file:
     state: "{{ item.1.state }}"
     dest: "{{ item.1.dest }}"
-  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dict2items }}"
+  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dictsort }}"
   tags:
     - "aspects_file_tasks"
     - "aspects_file_tasks_set_file_state"
