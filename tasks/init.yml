@@ -17,3 +17,17 @@
     - "aspects_file_tasks_set_file_contents_template"
     - "aspects_file_tasks_set_file_contents_template_plain"
     - "aspects_file_tasks_set_file_contents_template_yaml"
+
+
+- name: "Include set_file_contents_cas tasks"
+  when:
+    - aspects_file_tasks_set_file_contents_cas_enabled
+  include_tasks: set_file_contents_cas.yml
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_cas"
+    - "aspects_file_tasks_set_file_contents_upload"
+    - "aspects_file_tasks_set_file_contents_template"
+    - "aspects_file_tasks_set_file_contents_template_plain"
+    - "aspects_file_tasks_set_file_contents_template_yaml"

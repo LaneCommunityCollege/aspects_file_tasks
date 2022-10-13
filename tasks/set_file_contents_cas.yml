@@ -8,7 +8,7 @@
     owner: "{{ item.1.owner }}"
     group: "{{ item.1.group }}"
   loop: "{{ aspects_file_tasks_set_file_contents_cas | default({}) | dictsort }}"
-  notify: update cert authroities
+  notify: "update cert authorities"
   tags:
     - "aspects_file_tasks"
     - "aspects_file_tasks_set_file_contents"

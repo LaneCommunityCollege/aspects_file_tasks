@@ -1,49 +1,49 @@
 - name: "Set general file or directory state."
   when:
-    - item.value.enabled or item.value.enabled == "True"
+    - item.1.enabled or item.1.enabled == "True"
     - (
-        item.value.state == "file" or
-        item.value.state == "directory" or
-        item.value.state == "touch"
+        item.1.state == "file" or
+        item.1.state == "directory" or
+        item.1.state == "touch"
       )
   file:
-    state: "{{ item.value.state }}"
-    dest: "{{ item.value.dest }}"
-    owner: "{{ item.value.owner }}"
-    group: "{{ item.value.group }}"
-    mode: "{{ item.value.mode }}"
-  loop: "{{ common_utilities_set_file_state_items | default({}) | dict2items }}"
+    state: "{{ item.1.state }}"
+    dest: "{{ item.1.dest }}"
+    owner: "{{ item.1.owner }}"
+    group: "{{ item.1.group }}"
+    mode: "{{ item.1.mode }}"
+  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dict2items }}"
   tags:
-    - "common_utilities"
-    - "common_utilities_set_file_state"
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_state"
 
 - name: "Set general file or directory state."
   when:
-    - item.value.enabled or item.value.enabled == "True"
+    - item.1.enabled or item.1.enabled == "True"
     - (
-      item.value.state == "link" or
-      item.value.state == "hard"
+      item.1.state == "link" or
+      item.1.state == "hard"
       )
   file:
-    state: "{{ item.value.state }}"
-    src: "{{ item.value.src }}"
-    dest: "{{ item.value.dest }}"
-    owner: "{{ item.value.owner }}"
-    group: "{{ item.value.group }}"
-    mode: "{{ item.value.mode }}"
-  loop: "{{ common_utilities_set_file_state_items | default({}) | dict2items }}"
+    state: "{{ item.1.state }}"
+    src: "{{ item.1.src }}"
+    dest: "{{ item.1.dest }}"
+    owner: "{{ item.1.owner }}"
+    group: "{{ item.1.group }}"
+    mode: "{{ item.1.mode }}"
+  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dict2items }}"
   tags:
-    - "common_utilities"
-    - "common_utilities_set_file_state"
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_state"
 
 - name: "Delete general file or directory."
   when:
-    - item.value.enabled or item.value.enabled == "True"
-    - item.value.state == "absent"
+    - item.1.enabled or item.1.enabled == "True"
+    - item.1.state == "absent"
   file:
-    state: "{{ item.value.state }}"
-    dest: "{{ item.value.dest }}"
-  loop: "{{ common_utilities_set_file_state_items | default({}) | dict2items }}"
+    state: "{{ item.1.state }}"
+    dest: "{{ item.1.dest }}"
+  loop: "{{ aspects_file_tasks_set_file_state_items | default({}) | dict2items }}"
   tags:
-    - "common_utilities"
-    - "common_utilities_set_file_state"
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_state"
