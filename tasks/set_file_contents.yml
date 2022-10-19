@@ -42,3 +42,15 @@
     - "aspects_file_tasks_set_file_contents"
     - "aspects_file_tasks_set_file_contents_template"
     - "aspects_file_tasks_set_file_contents_template_yaml"
+
+- name: "Add lines to arbitrary files"
+  when:
+    - item.1.enabled
+  lineinfile:
+    state: "{{ item.1.state }}"
+    line: "{{ item.1.line }}"
+    path: "{{ item.1.path }}"
+  loop: "{{ aspects_file_tasks_set_line_contents | default({}) | dictsort }}"
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_line_contents"

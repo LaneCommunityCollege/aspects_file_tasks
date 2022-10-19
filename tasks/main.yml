@@ -10,3 +10,4 @@
     - "aspects_file_tasks_set_file_contents_template_plain"
     - "aspects_file_tasks_set_file_contents_template_yaml"
     - "aspects_file_tasks_set_file_contents_cas"
+    - "aspects_file_tasks_set_line_contents"
