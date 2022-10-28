@@ -89,6 +89,21 @@ aspects_file_tasks_set_file_contents_template_yaml_files:
       	< goes >: here
 ```
 
+### aspects_file_tasks_set_line_contents
+A dictionary/hash of lines to create in arbitrary files.
+
+Use the following pattern:
+
+```yaml
+aspects_file_tasks_set_line_contents:
+  < item key >:
+    enabled: < True|False >
+    state: "< present|absent >"
+    path: "< /path/to/file >"
+    line: 'line contents'
+```
+> WARNING: The line is whitespace sensitive. If your line starts with 3 spaces, and the actual contents of the line in the target file exists with 4 spaces, then the line with 3 spaces will be added to the end of the file.
+
 ### aspects_file_tasks_set_file_contents_cas
 A dictionary/hash of Certificate Authority files in `.pem` format to upload from your local system to your target system. 
 
