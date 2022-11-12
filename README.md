@@ -35,7 +35,7 @@ aspects_file_tasks_set_file_state_items:
   < item key >:
     enabled: < True|False >
     state: "< file|directory|touch|link|hard|absent >"
-    path: "< path/to/target >"
+    dest: "< path/to/target >"
     mode: "< mode >"
     owner: "< owner >"
     group: "< group >"
