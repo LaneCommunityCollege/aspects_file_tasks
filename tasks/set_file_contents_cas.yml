@@ -1,6 +1,7 @@
 - name: "set_file_contents - Upload a Certificate Authority file."
+  run_once: "{{ item.1.run_once | default(false) }}"
   when:
-    -  item.1.enabled or item.1.enabled == "True"
+    - item.1.enabled or item.1.enabled == "True"
   copy:
     src: "{{ item.1.src }}"
     dest: "{{ item.1.dest }}"
