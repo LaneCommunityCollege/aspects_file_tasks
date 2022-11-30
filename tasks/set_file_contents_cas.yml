@@ -1,5 +1,5 @@
 - name: "set_file_contents - Upload a Certificate Authority file."
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when:
     - item.1.enabled or item.1.enabled == "True"
   copy:

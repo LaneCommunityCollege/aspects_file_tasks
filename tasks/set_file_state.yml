@@ -1,5 +1,5 @@
 - name: "Set general file or directory state."
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when:
     - item.1.enabled or item.1.enabled == "True"
     - (
@@ -19,7 +19,7 @@
     - "aspects_file_tasks_set_file_state"
 
 - name: "Set general file or directory state."
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when:
     - item.1.enabled or item.1.enabled == "True"
     - (
@@ -39,7 +39,7 @@
     - "aspects_file_tasks_set_file_state"
 
 - name: "Delete general file or directory."
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when:
     - item.1.enabled or item.1.enabled == "True"
     - item.1.state == "absent"

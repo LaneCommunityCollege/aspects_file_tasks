@@ -1,5 +1,5 @@
 - name: "set_file_contents - Upload a file"
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when:
     - item.1.enabled or item.1.enabled == "True"
   copy:
@@ -15,7 +15,7 @@
     - "aspects_file_tasks_set_file_contents_upload"
 
 - name: "set_file_contents - Template a plain file."
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when: item.1.enabled or item.1.enabled == "True"
   template:
     src: non_filtered.j2
@@ -31,7 +31,7 @@
     - "aspects_file_tasks_set_file_contents_template_plain"
 
 - name: "set_file_contents - Template a yaml file."
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when: item.1.enabled or item.1.enabled == "True"
   template:
     src: yaml_filtered.j2
@@ -47,7 +47,7 @@
     - "aspects_file_tasks_set_file_contents_template_yaml"
 
 - name: "Add lines to arbitrary files"
-  run_once: "{{ item.1.run_once | default(false) }}"
+  run_once: item.1.run_once | default(false)
   when:
     - item.1.enabled
   lineinfile:
