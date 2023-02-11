@@ -1,6 +1,25 @@
 - name: "set_file_contents - Upload a Certificate Authority file."
-  run_once: item.1.run_once | default(false)
+  run_once: false
   when:
+    - ( item.1.run_once is not defined or item.1.run_once == false )
+    - item.1.enabled or item.1.enabled == "True"
+  copy:
+    src: "{{ item.1.src }}"
+    dest: "{{ item.1.dest }}"
+    mode: "{{ item.1.mode }}"
+    owner: "{{ item.1.owner }}"
+    group: "{{ item.1.group }}"
+  loop: "{{ aspects_file_tasks_set_file_contents_cas | default({}) | dictsort }}"
+  notify: "update cert authorities"
+  tags:
+    - "aspects_file_tasks"
+    - "aspects_file_tasks_set_file_contents"
+    - "aspects_file_tasks_set_file_contents_cas"
+
+- name: "set_file_contents - Run Once - Upload a Certificate Authority file."
+  run_once: true
+  when:
+    - item.1.run_once is defined and item.1.run_once == true
     - item.1.enabled or item.1.enabled == "True"
   copy:
     src: "{{ item.1.src }}"
