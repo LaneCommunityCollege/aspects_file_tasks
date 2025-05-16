@@ -2,7 +2,7 @@
   run_once: false
   when:
     - ( item.1.run_once is not defined or item.1.run_once == false )
-    - item.1.enabled or item.1.enabled == "True"
+    - item.1.enabled or item.1.enabled == "True" or item.1.enabled == "true" 
   copy:
     src: "{{ item.1.src }}"
     dest: "{{ item.1.dest }}"
@@ -19,7 +19,7 @@
   run_once: true
   when:
     - item.1.run_once is defined and item.1.run_once == true
-    - item.1.enabled or item.1.enabled == "True"
+    - item.1.enabled or item.1.enabled == "True" or item.1.enabled == "true"
   copy:
     src: "{{ item.1.src }}"
     dest: "{{ item.1.dest }}"
@@ -36,7 +36,7 @@
   run_once: false
   when:
     - ( item.1.run_once is not defined or item.1.run_once == false )
-    - ( item.1.enabled or item.1.enabled == "True" )
+    - ( item.1.enabled or item.1.enabled == "True"or item.1.enabled == "true"  )
   template:
     src: non_filtered.j2
     dest: "{{ item.1.target_path }}"
@@ -54,7 +54,7 @@
   run_once: true
   when:
     - item.1.run_once is defined and item.1.run_once == true
-    - item.1.enabled or item.1.enabled == "True"
+    - item.1.enabled or item.1.enabled == "True" or item.1.enabled == "true"
   template:
     src: non_filtered.j2
     dest: "{{ item.1.target_path }}"
@@ -72,7 +72,7 @@
   run_once: false
   when:
     - ( item.1.run_once is not defined or item.1.run_once == false )
-    - ( item.1.enabled or item.1.enabled == "True" )
+    - ( item.1.enabled or item.1.enabled == "True"or item.1.enabled == "true"  )
   template:
     src: yaml_filtered.j2
     dest: "{{ item.1.target_path }}"
